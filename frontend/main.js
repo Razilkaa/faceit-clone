@@ -18,11 +18,18 @@ elsearchBtn.addEventListener("click", () => {
         return response.json();
     })
     .then(data =>{
+        const matchesHTML = data.matches.map(match => `
+            <div class="match ${match.result}">
+                <span>${match.score}</span>
+                ${match.competition_type}
+                ${match.finished_at}</div>`).join(""); 
+
         elprofile.innerHTML = `
         <h2>${data.nickname}</h2>
         <p>Country: ${data.country}</p>
         <p>Level: ${data.level}</p>
         <p>ELO: ${data.elo}</p>
+        ${matchesHTML}
         `
     } )
     .catch(() => {
