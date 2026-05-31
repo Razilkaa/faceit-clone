@@ -11,7 +11,12 @@ elsearchBtn.addEventListener("click", () => {
     }
     const url = `/api/players/${nickname}`;
     fetch(url)
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Player not found");
+        }
+        return response.json();
+    })
     .then(data =>{
         elprofile.innerHTML = `
         <h2>${data.nickname}</h2>
