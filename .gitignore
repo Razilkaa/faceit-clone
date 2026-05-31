@@ -4,4 +4,4 @@ __pycache__/
 node_modules/
 *.db
 venv
-respone_curl.json
+response_curl.json
